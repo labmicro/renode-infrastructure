@@ -36,7 +36,19 @@ namespace Antmicro.Renode.Utilities.GDB.Commands
             var xmlFile = new StringBuilder();
             if(objectType == "features")
             {
-                xmlFile.Append($"<?xml version=\"1.0\"?>\n<!DOCTYPE target SYSTEM \"gdb-target.dtd\">\n<target version=\"1.0\">\n<architecture>{manager.Cpu.GDBArchitecture}</architecture>\n</target>");
+                xmlFile.Append("<?xml version=\"1.0\"?>\n<!DOCTYPE target SYSTEM \"gdb-target.dtd\">\n<target version=\"1.0\">\n");
+                xmlFile.Append($"<architecture>{manager.Cpu.GDBArchitecture}</architecture>\n</target>");
+                foreach(var feature in manager.Cpu.GDBFeatures)
+                {
+                    xmlFile.Append($"<feature name=\"{feature.Name}\">");
+                    foreach(var register in feature.Registers)
+                    {
+                        xmlFile.Append($"<reg name=\"{register.Name}\" bitsize=\"{register.Size}\" regnum=\"{register.Number}\" type=\"{register.Type}\" group=\"{register.Group}\"/>");
+
+                    }
+                    xmlFile.Append("</feature>");
+                }
+
             }
             else if(objectType == "threads")
             {
