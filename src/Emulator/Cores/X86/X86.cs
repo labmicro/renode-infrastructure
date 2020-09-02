@@ -5,6 +5,7 @@
 // This file is licensed under the MIT License.
 // Full license text is available in 'licenses/MIT.txt'.
 //
+using System.Collections.Generic;
 using Endianess = ELFSharp.ELF.Endianess;
 using Antmicro.Renode.Core;
 using Antmicro.Renode.Utilities.Binding;
@@ -25,6 +26,8 @@ namespace Antmicro.Renode.Peripherals.CPU
         public override string Architecture { get { return "i386"; } }
 
         public override string GDBArchitecture { get { return Architecture; } }
+
+        public override List<IGBDFeature> GDBFeatures { get { return new List<IGBDFeature>(); } }
 
         protected override Interrupt DecodeInterrupt(int number)
         {

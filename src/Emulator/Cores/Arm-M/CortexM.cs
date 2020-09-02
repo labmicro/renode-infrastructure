@@ -6,6 +6,7 @@
 // Full license text is available in 'licenses/MIT.txt'.
 //
 using System;
+using System.Collections.Generic;
 using Antmicro.Renode.Core;
 using Antmicro.Renode.Peripherals.Bus;
 using Antmicro.Renode.Peripherals.IRQControllers;
@@ -52,6 +53,35 @@ namespace Antmicro.Renode.Peripherals.CPU
         }
 
         public override string Architecture { get { return "arm-m"; } }
+
+        public override List<IGBDFeature> GDBFeatures {
+            get
+            {
+                List<IGBDFeature> features = new List<IGBDFeature>();
+
+                IGBDFeature feature = new IGBDFeature("org.gnu.gdb.arm.m-profile");
+                for(uint index = 0; index <= 12; index++)
+                {
+                    feature.Registers.Add(new IGBDRegister($"r{index}", index, 32, "uint32", "general"));
+                }
+                feature.Registers.Add(new IGBDRegister("sp", 13, 32, "data_ptr", "general"));
+                feature.Registers.Add(new IGBDRegister("lr", 14, 32, "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister("ps", 15, 32, "code_ptr", "general"));
+                feature.Registers.Add(new IGBDRegister("xpsr", 25, 32, "uint32", "general"));
+                features.Add(feature);
+
+                feature = new IGBDFeature("org.gnu.gdb.arm.m-system");
+                feature.Registers.Add(new IGBDRegister("msp", 26, 32, "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister("psp", 27, 32, "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister("primask", 28, 32, "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister("basepri", 29, 32, "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister("faultmask", 20, 32, "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister("control", 32, 32, "uint32", "general"));
+                features.Add(feature);
+
+                return features;
+            }
+        }
 
         public uint VectorTableOffset
         {
