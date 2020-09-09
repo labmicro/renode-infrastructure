@@ -8,9 +8,9 @@ using Antmicro.Renode.Utilities.GDB;
 
 namespace Antmicro.Renode.Extensions.Utilities.GDB.Commands
 {
-    public class ThreadContextCommand : Command, IMultithreadCommand
+    public class MultithreadContextCommand : Command, IMultithreadCommand
     {
-        public ThreadContextCommand(CommandsManager manager) : base(manager)
+        public MultithreadContextCommand(CommandsManager manager) : base(manager)
         {
         }
 
@@ -18,7 +18,7 @@ namespace Antmicro.Renode.Extensions.Utilities.GDB.Commands
         public PacketData Execute([Argument(Encoding = ArgumentAttribute.ArgumentEncoding.HexNumber)]uint id)
         {
             manager.SelectCpuForDebugging(id);
-            return new PacketData("OK");
+            return PacketData.Success;
         }
     }
 }

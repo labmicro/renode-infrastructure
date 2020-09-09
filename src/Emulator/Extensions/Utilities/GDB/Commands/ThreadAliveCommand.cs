@@ -18,7 +18,7 @@ namespace Antmicro.Renode.Extensions.Utilities.GDB.Commands
         public PacketData Execute()
         {
             // return information to gdb that the thread is still alive
-            return new PacketData("OK");
+            return PacketData.Success;
         }
     }
 }

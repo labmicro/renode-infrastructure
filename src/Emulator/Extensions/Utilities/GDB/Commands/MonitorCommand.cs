@@ -66,6 +66,10 @@ namespace Antmicro.Renode.Utilities.GDB.Commands
                         manager.ShouldAutoStart = false;
                     }
                     break;
+                case "reset halt":
+                    manager.Machine.Pause();
+                    manager.Machine.Reset();
+                    break;
                 case "reg":
                     var inputBuilder = new StringBuilder("=====\n");
                     foreach(var i in manager.Cpu.GetRegisters().Where(x => x.IsGeneral).Select(x => x.Index))

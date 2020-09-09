@@ -62,21 +62,21 @@ namespace Antmicro.Renode.Peripherals.CPU
                 IGBDFeature feature = new IGBDFeature("org.gnu.gdb.arm.m-profile");
                 for(uint index = 0; index <= 12; index++)
                 {
-                    feature.Registers.Add(new IGBDRegister($"r{index}", index, 32, "uint32", "general"));
+                    feature.Registers.Add(new IGBDRegister(index, 32, $"r{index}", "uint32", "general"));
                 }
-                feature.Registers.Add(new IGBDRegister("sp", 13, 32, "data_ptr", "general"));
-                feature.Registers.Add(new IGBDRegister("lr", 14, 32, "uint32", "general"));
-                feature.Registers.Add(new IGBDRegister("ps", 15, 32, "code_ptr", "general"));
-                feature.Registers.Add(new IGBDRegister("xpsr", 25, 32, "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister(13, 32, "sp", "data_ptr", "general"));
+                feature.Registers.Add(new IGBDRegister(14, 32, "lr", "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister(15, 32, "pc", "code_ptr", "general"));
+                feature.Registers.Add(new IGBDRegister(25, 32, "xpsr", "uint32", "general"));
                 features.Add(feature);
 
                 feature = new IGBDFeature("org.gnu.gdb.arm.m-system");
-                feature.Registers.Add(new IGBDRegister("msp", 26, 32, "uint32", "general"));
-                feature.Registers.Add(new IGBDRegister("psp", 27, 32, "uint32", "general"));
-                feature.Registers.Add(new IGBDRegister("primask", 28, 32, "uint32", "general"));
-                feature.Registers.Add(new IGBDRegister("basepri", 29, 32, "uint32", "general"));
-                feature.Registers.Add(new IGBDRegister("faultmask", 20, 32, "uint32", "general"));
-                feature.Registers.Add(new IGBDRegister("control", 32, 32, "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister(26, 32, "msp", "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister(27, 32, "psp", "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister(28, 32, "primask", "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister(29, 32, "basepri", "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister(30, 32, "faultmask", "uint32", "general"));
+                feature.Registers.Add(new IGBDRegister(31, 32, "control", "uint32", "general"));
                 features.Add(feature);
 
                 return features;
