@@ -331,6 +331,8 @@
     <Compile Include="Peripherals\UART\NRF52840_UART.cs" />
     <Compile Include="Peripherals\Miscellaneous\STM32F4_RCC.cs" />
     <Compile Include="Peripherals\Timers\NRF52840_RTC.cs" />
+    <Compile Include="Peripherals\GPIOPort\LPC43xx_GPIO.cs" />
+    <Compile Include="Peripherals\Miscellaneous\SevenSegments.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

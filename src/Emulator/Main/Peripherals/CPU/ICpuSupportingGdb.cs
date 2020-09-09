@@ -11,17 +11,17 @@ namespace Antmicro.Renode.Peripherals.CPU
 {
     public struct IGBDRegister
     {
-        public string Name { get; }
-        public uint Size { get; }
         public uint Number { get; }
+        public uint Size { get; }
+        public string Name { get; }
         public string Type { get; }
         public string Group { get; }
 
-        public IGBDRegister(string name, uint size, uint number, string type, string group) : this()
+        public IGBDRegister(uint number, uint size, string name, string type, string group) : this()
         {
-            this.Name = name;
-            this.Size = size;
             this.Number = number;
+            this.Size = size;
+            this.Name = name;
             this.Type = type;
             this.Group = group;
         }

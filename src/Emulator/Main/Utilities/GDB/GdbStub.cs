@@ -51,7 +51,7 @@ namespace Antmicro.Renode.Utilities.GDB
             terminal.Start(port);
             commHandler = new CommunicationHandler(this, commandsManager);
 
-            LogsEnabled = false;
+            //LogsEnabled = false;
         }
 
         public void AttachCPU(ICpuSupportingGdb cpu)
@@ -293,7 +293,7 @@ namespace Antmicro.Renode.Utilities.GDB
 
                 public void Send(Packet packet)
                 {
-                    if(commHandler.stub.LogsEnabled)
+                    //if(commHandler.stub.LogsEnabled)
                     {
                         commHandler.manager.Cpu.Log(LogLevel.Debug, "Sending response to GDB: {0}", packet.Data.GetDataAsStringLimited());
                     }

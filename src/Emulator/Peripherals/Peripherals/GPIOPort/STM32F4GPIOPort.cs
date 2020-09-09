@@ -27,7 +27,8 @@ namespace Antmicro.Renode.Peripherals.GPIOPort
         public uint ReadDoubleWord(long offset)
         {
             uint returnValue = 0;
-            switch((Registers)offset)
+
+                switch((Registers)offset)
             {
             case Registers.GPIOx_MODE: // GPIO port mode register
                 returnValue = gpiox_mode;
@@ -180,7 +181,9 @@ namespace Antmicro.Renode.Peripherals.GPIOPort
             GPIOx_BSRR      = 0x18, // GPIO port bit set/reset register - Write-Only
             GPIOx_LCKR      = 0x1C, // GPIO port configuration lock register - Read-Write
             GPIOx_AFRL      = 0x20, // GPIO alternate function low register - Read-Write
-            GPIOx_AFRH      = 0x24  // GPIO alternate function high register - Read-Write
+            GPIOx_AFRH      = 0x24, // GPIO alternate function high register - Read-Write
+
+
         }
     }
 }
