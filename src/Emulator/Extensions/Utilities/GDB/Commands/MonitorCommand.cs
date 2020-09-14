@@ -67,7 +67,7 @@ namespace Antmicro.Renode.Utilities.GDB.Commands
                     }
                     break;
                 case "reset halt":
-                    manager.Machine.Pause();
+                    //manager.Machine.Pause();
                     manager.Machine.Reset();
                     break;
                 case "reg":
